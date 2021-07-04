@@ -1,6 +1,6 @@
 from app import create_app
 
-app = create_app()
+rtb_app = create_app()
 
 if __name__ == "__main__":
-    app.run()
+    rtb_app.run()
