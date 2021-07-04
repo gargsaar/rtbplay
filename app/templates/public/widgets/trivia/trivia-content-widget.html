@@ -1,0 +1,83 @@
+<!--widget: trivia content widget shows the open trivia question -->
+
+<!-- custom script to count skip clicks and send the data to home_view-->
+<script>
+    var clicks = 0;
+    function onClick() {
+      clicks += 1;
+      $('#clicks').load(
+        "{{ url_for('users.index', skip_count = '$clicks') }}"
+    };
+}
+
+</script>
+
+<!-- card-begins -->
+<div class="card bd-0">
+    <div class="card-header bg-dark bd-b-0-f pd-b-0"><!-- card-header begins-->
+        <nav class="nav nav-tabs">
+            <a class="nav-link active show" data-toggle="tab" href="#cs">Question</a>
+        </nav>
+    </div><!-- card-header ends-->
+
+
+    <div class="card-body bd bd-t-0 tab-content"><!-- tab-pane -->
+        <div id="cs" class="tab-pane active show">
+            <form id="myForm" action="{{url_for('users.result')}}" method="post" onsubmit="target_popup(this)">
+
+                <p class="tx-info"><b>Topic: </b>{{trivia['results'][0]['category']}}</p>
+
+                <div class="card bg-gray-200 pd-l-20 pd-t-20 mg-b-20 mg-t-20 bd-0">
+                    <p>{{trivia["results"][0]["question"][:-1]+'?'}}<p>
+                </div>
+
+
+                {% if trivia["results"][0]["type"] == 'boolean' %}
+                <div>
+                    <input type="radio" id="radio-true" name="answer" value="True" checked>
+                    <label for="radio-true">True</label>
+                </div>
+                <div>
+                    <input type="radio" id="radio-false" name="answer" value="False">
+                    <label for="radio-false">False</label>
+                </div>
+                <div>
+                    <input type="radio" id="radio-notknow" name="answer" value="I don't know">
+                    <label for="radio-notknow">I don't Know</label>
+                </div>
+                {% elif trivia["results"][0]["type"] == 'multiple' %}
+                <div>
+                    <input type="radio" id="radio-multiple-1" name="answer" value="{{choice[0]}}" checked>
+                    <label for="radio-multiple-1">{{choice[0]}}</label>
+                </div>
+                <div>
+                    <input type="radio" id="radio-multiple-2" name="answer" value="{{choice[1]}}">
+                    <label for="radio-multiple-2">{{choice[1]}}</label>
+                </div>
+                <div>
+                    <input type="radio" id="radio-multiple-3" name="answer" value="{{choice[2]}}">
+                    <label for="radio-multiple-3">{{choice[2]}}</label>
+                </div>
+                <div>
+                    <input type="radio" id="radio-multiple-4" name="answer" value="{{choice[3]}}">
+                    <label for="radio-multiple-4">{{choice[3]}}</label>
+                </div>
+                <div>
+                    <input type="radio" id="radio-multiple-5" name="answer" value="{{choice[4]}}">
+                    <label for="radio-multiple-5">{{choice[4]}}</label>
+                </div>
+                {% endif %}
+
+
+                <div class="mg-b-20 mg-t-20">
+                    <button class="btn btn-az-primary pd-x-30 mg-r-5" type="submit">Submit</button>
+                    <button class="btn btn-dark pd-x-30 mg-r-5" type="reset" value="Reset">Reset</button>
+                    <a class="btn btn-light pd-x-30" type="button" href="" onClick="onClick()">Skip Question</a>
+                    <input type="hidden" name="skip_count" id="clicks">
+                </div>
+            </form>
+        </div><!-- tab-pane -->
+
+
+    </div><!-- card-body -->
+</div><!--card ends-->

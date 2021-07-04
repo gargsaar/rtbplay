@@ -1,0 +1,65 @@
+<!-- vendor css, required for chartjs-->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!--widget: own performance bar chart -->
+
+<!--card begins-->
+<div class="card card-dashboard-five">
+  <div class="card-header">
+    <h6 class="card-title">Your Performance</h6>
+    <span class="az-content-text"><p>Here's how you're performing.</p></span>
+  </div><!-- card-header -->
+
+  <!--user's score - to be updated dynamically-->
+  <h6>Total Score: {{ score[0] }}</h6>
+
+  <!--chartjs chart canvas begins-->
+  <div style="height:225px;">
+    <canvas height="225" id="myChart"></canvas>
+  </div>
+
+</div><!-- card-dashboard-five -->
+
+
+<!-- custom script to configure chart, define and display data. data to be dynamically updated-->
+<script>
+  // === include 'setup' then 'config' above ===
+
+  var ctx = document.getElementById('myChart');
+  var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ["Computer Science", "General Knowledge", "Social Science", "Entertainment", "Others"],
+        datasets: [{
+            label: 'Topic-wise Scores',
+            data: [{{score[1]}}, {{score[2]}}, {{score[3]}}, {{score[4]}}, {{score[5]}}],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+</script>

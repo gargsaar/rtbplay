@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <!-- included template from includes-->
+    {% include "/public/includes/head.html" %}
+
+    <body class="az-body">
+
+            <div class="az-error-wrapper">
+                <h1>WIP</h1>
+                <h2>Oopps. The page you were looking for is Work-In-Progress.</h2>
+                <h6>I'm almost done with the development of this page, just give us a few more days.</h6>
+                {% if current_user.is_authenticated %}
+                <a href="{{url_for('users.index')}}" class="btn btn-outline-indigo">Back to Home</a>
+                {% else %}
+                <a href="{{url_for('main.about')}}" class="btn btn-outline-indigo">Back to Home</a>
+                {% endif %}
+            </div>
+    </body>
+
+</html>
+
+
+

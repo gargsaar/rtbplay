@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- included template from includes-->
+{% include "/public/includes/head.html" %}
+
+<body class="az-body">
+
+        <div class="az-signup-wrapper"><!-- az-signup-wrapper -->
+
+            <div class="az-column-signup-left"><!-- az-column-signup-left -->
+                <div>
+                    <i class="typcn typcn-chart-bar-outline"></i>
+                    <a href="{{url_for('main.login')}}"><h1 class="az-logo">R<span>T</span>B</h1></a>
+                    <h5>raise-the-bar</h5>
+                    <p>Compete with the best to be on the top by answering questions in the areas of general interest.
+                        Think of it as an online boxing ring where where you knock your opponent off with the punches of your
+                        knowledge and brain.</p>
+                    <p>Your playground for brainy fun.</p>
+                    <a href="{{url_for('main.about')}}" class="btn btn-outline-indigo">Learn More</a>
+                </div>
+            </div><!-- az-column-signup-left -->
+

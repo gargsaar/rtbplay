@@ -1,0 +1,69 @@
+<!--widget: trivia result widget shows the open trivia answer -->
+
+<!-- card-begins -->
+<div class="card bd-0">
+    <div class="card-header bg-dark bd-b-0-f pd-b-0"><!-- card-header begins-->
+        <nav class="nav nav-tabs">
+            <a class="nav-link active show" data-toggle="tab" href="#cs">Result</a>
+        </nav>
+    </div><!-- card-header ends-->
+
+    <div class="card-body bd bd-t-0 tab-content"><!-- tab-pane -->
+
+        <div id="cs" class="tab-pane active show">
+            <!--flash error messages-->
+
+            {% if value == 'Correct' %}
+            <p class="tx-success"><em>"You're AWESOME! Keep going and raise the bar."</em></p>
+            <div style="width:25%">
+                <div style="height:0;padding-bottom:100%;position:relative;width:100%">
+                    <iframe allowfullscreen="" frameBorder="0" height="100%"
+                            src="https://giphy.com/embed/3IYt6JjumNoT4zCq13"
+                            style="left:0;position:absolute;top:0;padding-bottom:20px" width="100%">
+                    </iframe>
+                </div>
+            </div>
+
+            {% elif value == 'not_know' %}
+            <p class="tx-warning"><em>"It's ok if you don't know, this is what learning is. Try Next!"</em></p>
+            <div style="width:25%">
+                <div style="height:0;padding-bottom:100%;position:relative;width:100%">
+                    <iframe allowfullscreen="" frameBorder="0" height="100%"
+                            src="https://giphy.com/embed/26FfhcAJm5HqaJg2c"
+                            style="left:0;position:absolute;top:0" width="100%">
+                    </iframe>
+                </div>
+            </div>
+
+            {% else %}
+            <p class="tx-danger"><em>Oops, that's incorrect. It is the courage to continue that counts!</em></p>
+            <div style="width:25%">
+                <div style="height:0;padding-bottom:100%;position:relative;width:100%">
+                    <iframe allowfullscreen="" frameBorder="0" height="100%"
+                            src="https://giphy.com/embed/xT5LMzV7WWLJTD6jLO"
+                            style="left:0;position:absolute;top:0" width="100%">
+                    </iframe>
+                </div>
+            </div>
+            {% endif %}
+
+
+            <p class="tx-info"><b>Topic: </b>{{trivia['results'][0]['category']}}</p>
+
+            <div class="card bg-gray-200 pd-l-20 pd-t-20 mg-b-20 mg-t-20 bd-0">
+                <p>{{trivia["results"][0]["question"][:-1]+'?'}}</p>
+            </div>
+            <p class="tx-purple"><b>Correct Answer: </b> {{trivia["results"][0]["correct_answer"]}}</p>
+            <p><b>Your Answer: </b> {{user_answer}}</p>
+
+
+            <div class="mg-b-20 mg-t-20">
+                <a class="btn btn-az-primary pd-x-30 mg-r-5" type="button"
+                   href="{{url_for('users.index')}}">Next Question</a>
+            </div>
+
+        </div><!-- tab-pane ends-->
+
+    </div><!-- card-body ends-->
+
+</div><!-- card ends-->

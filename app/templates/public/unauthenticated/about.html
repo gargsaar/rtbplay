@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <!-- included head template from layout-->
+  {% include "/public/includes/head.html" %}
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-lg navbar-dark bg-dark">
+            <div class="container">
+                {% if current_user.is_authenticated %}
+                <a class="navbar-brand tx-22 font-weight-bold" href="{{ url_for('users.index') }}">RTB</a>
+                {% else %}
+                <a class="navbar-brand tx-22 font-weight-bold" href="{{ url_for('main.login') }}">RTB</a>
+                {% endif %}
+            </div>
+        </nav>
+        <div class="landing-sass-header-content bg-dark">
+            <div class="container mg-b-60">
+                <h1 class="text-center font-weight-bold pt-5 pb-30px mb-0 text-white">ABOUT RTB</h1>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="mb-5">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="tx-22 font-weight-bold mg-b-20 tx-white">WEBSITE</div>
+                        <p class="text-light">RTB, 'RAISE THE BAR', is a free web application for knowledge-based fun and entertainment.
+                            The website theme is a highly customised version of the
+                            <a href="https://www.bootstrapdash.com/product/azia-admin/">Azia Admin</a> html template by
+                            <a href="https://www.bootstrapdash.com/">bootstrapdash</a>. The core functionality of RTB is written in the
+                            Python coding language using <a href="https://flask.palletsprojects.com/en/2.0.x/">FLASK</a> framework
+                            , also making use of Javascript and other web technologies.
+
+                        </p>
+                    </div>
+                </div>
+                <div class="row mg-t-20">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="tx-22 font-weight-bold mg-b-20 tx-white">PRIVACY</div>
+                        <p class="text-light">The application obtains the information you provide during registration.
+                            In addition, the application may collect certain information automatically, including, but not limited to,
+                            the way you use the application. Any of your information, including passwords that are
+                            encrypted, will never be shared with any third party or external service.</a></p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <section>
+            <div class="container">
+                <div id="landing-sass-testimonial-carousel" class="landing-sass-testimonial-carousel carousel slide" data-ride="carousel">
+                    <div class="d-flex">
+                        <h4 class="font-weight-bold mb-0">CREDITS AND ACKNOWLEDGEMENTS</h4>
+                        <div class="ml-auto d-flex text-gray">
+                            <a class="carousel-control-prev text-reset" href="#landing-sass-testimonial-carousel" role="button" data-slide="prev">
+                                <i class="typcn icon typcn-arrow-left tx-30"></i>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next text-reset" href="#landing-sass-testimonial-carousel" role="button" data-slide="next">
+                                <i class="typcn icon typcn-arrow-right tx-30"></i>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="carousel-inner" role="listbox">
+                        <div class="carousel-item active">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <div class="card">
+                                        <div class="card-body p-40px">
+                                            <h5>Open Trivia Database</h5>
+                                            <p class="text-muted">Free to use, user-contributed trivia question database.</p>
+                                            <div class="media">
+                                                <div class="media-body">
+                                                    <p class="text-muted mb-0"><a href="https://opentdb.com/">opentdb.com</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="card">
+                                        <div class="card-body p-40px">
+                                            <h5>Website Theme</h5>
+                                            <p class="text-muted">Azia Admin template by BootstrapDash</p>
+                                            <div class="media">
+                                                <div class="media-body">
+                                                    <p class="text-muted mb-0"><a href="https://www.bootstrapdash.com/product/azia-admin/">bootstrapdash.com</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <div class="card">
+                                        <div class="card-body p-40px">
+                                            <h5>Gender Prediction API</h5>
+                                            <p class="text-muted">Predicts gender and country-of-origin for a given name</p>
+                                            <div class="media">
+                                                <div class="media-body">
+                                                    <p class="text-muted mb-0"><a href="https://gender-api.com/en/">gender-api.com</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="card">
+                                        <div class="card-body p-40px">
+                                            <h5>GIFs, Icons</h5>
+                                            <p class="text-muted">An ever growing collection of icons and images</p>
+                                            <div class="media">
+                                                <div class="media-body">
+                                                    <p class="text-muted mb-0"><a href="https://giphy.com/">giphy.com</a></p>
+                                                    <p class="text-muted mb-0"><a href="https://game-icons.net/">game-icons.net</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <div class="card">
+                                        <div class="card-body p-40px">
+                                            <h5>Github</h5>
+                                            <p class="text-muted">Code repository and version control</p>
+                                            <div class="media">
+                                                <div class="media-body">
+                                                    <p class="text-muted mb-0"><a href="https://github.com/">github.com</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="card">
+                                        <div class="card-body p-40px">
+                                            <h5>Heroku</h5>
+                                            <p class="text-muted">App Deployment</p>
+                                            <div class="media">
+                                                <div class="media-body">
+                                                    <p class="text-muted mb-0"><a href="https://heroku.com/">heroku.com</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <div class="card">
+                                        <div class="card-body p-40px">
+                                            <h5>reCaptcha</h5>
+                                            <p class="text-muted">Protects site from spam and abuse..</p>
+                                            <div class="media">
+                                                <div class="media-body">
+                                                    <p class="text-muted mb-0"><a href="https://developers.google.com/recaptcha">
+                                                        developers.google.com/recaptcha</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="card">
+                                        <div class="card-body p-40px">
+                                            <h5>Mailboxlayer</h5>
+                                            <p class="text-muted">Email validation & verification</p>
+                                            <div class="media">
+                                                <div class="media-body">
+                                                    <p class="text-muted mb-0"><a href="https://mailboxlayer.com/">mailboxlayer.com</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+            <div class="container mg-t-30">
+                <section class="mb-5">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="footer-brand-wrapper tx-22 font-weight-bold mg-b-20">ONE LAST THING...</div>
+                            <p class="pb-2 mb-4">This application is strictly for non-commercial purposes
+                                and there is no intention to raise any monetary benefits, however,
+                                some services and APIs used in the application are paid, so if you wish to contribute -
+                                it will help in sustaining and growing this initiative. <a href="mailto:sagarg@twilio.com">Let's Connect!</a></p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+    </main>
+
+    <!-- included footer template from layout-->
+    {% include "/public/includes/footer.html" %}
+</body>
+
+</html>

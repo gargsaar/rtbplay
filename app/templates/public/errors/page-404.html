@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <!-- included template from includes-->
+    {% include "/public/includes/head.html" %}
+
+    <body class="az-body">
+
+            <div class="az-error-wrapper">
+                <h1>404</h1>
+                <h2>Oopps. The page you were looking for doesn't exist (404).</h2>
+                <h6>You may have mistyped the address or the page may have moved.</h6>
+                {% if current_user.is_authenticated %}
+                <a href="{{url_for('users.index')}}" class="btn btn-outline-indigo">Back to Home</a>
+                {% else %}
+                <a href="{{url_for('main.login')}}" class="btn btn-outline-indigo">Back to Home</a>
+                {% endif %}
+            </div>
+    </body>
+
+</html>
+
+
+

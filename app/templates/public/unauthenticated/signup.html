@@ -1,0 +1,63 @@
+<!-- included template from includes-->
+{% include "/public/includes/login-page-layout.html" %}
+
+          <!-- az-column-signup-right -->
+          <div class="az-column-signup">
+              <a href="{{url_for('main.signup')}}"><h1 class="az-logo">R<span>T</span>B</h1></a>
+              <div class="az-signup-header">
+                  <h2>Get Started!</h2>
+                  <h4>It's free to signup and only takes a minute.</h4>
+
+                  <div><!-- flash error message -->
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    {% for message in messages %}
+                    <p class="tx-danger">{{ message }}</p>
+                    {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+                </div>
+
+
+
+                  <form action="{{ url_for('main.signup') }}" method="post">
+                      <div class="form-group">
+                          <label for="fname">Your Name</label>
+                          <input type="text" class="form-control" placeholder="Enter your full name" name="fname" id="fname"
+                                 required>
+                      </div><!-- form-group -->
+                      <div class="form-group">
+                          <label for="username">Username</label>
+                          <input type="text" class="form-control" placeholder="Enter a username" name="username" id="username"
+                                 required>
+                      </div><!-- form-group -->
+                      <div class="form-group">
+                          <label for="email">Email</label>
+                          <input type="email" class="form-control" placeholder="Enter your email" name="email" id="email"
+                                 required>
+                      </div><!-- form-group -->
+                      <div class="form-group">
+                          <label for="password">Password</label>
+                          <input type="password" class="form-control" placeholder="Enter a password" name="password" id="password"
+                                 required>
+                      </div><!-- form-group -->
+                      <button class="btn btn-az-primary btn-block">Create Account</button>
+                      <button class="btn btn-light btn-block" type="reset" value="Clear">Reset</button>
+                  </form>
+              </div><!-- az-signup-header -->
+              <div class="az-signup-footer">
+                  <p>Already have an account? <a href="{{ url_for('main.login') }}">Sign In</a></p>
+              </div><!-- az-signin-footer -->
+          </div><!-- az-column-signup -->
+    </div><!-- az-signup-wrapper -->
+
+
+    <!-- vendor js -->
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+
+    <!-- azia css -->
+    <script src="{{ url_for('static', filename='js/azia.js') }}"></script>
+
+</body>
+</html>
