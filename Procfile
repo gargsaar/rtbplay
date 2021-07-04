@@ -1,1 +1,1 @@
-web: gunicorn rtb_app:app
+web: gunicorn app:rtb_app
