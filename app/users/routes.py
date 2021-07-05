@@ -68,7 +68,7 @@ def result():
 
     return render_template("/public/result.html",
                            value=res,
-                           trivia=trivia_resp,
+                           trivia=trivia_response,
                            today_date=datetime.now().strftime("%d-%B-%Y"),
                            user=current_user,
                            score=user_performance(),
