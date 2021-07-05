@@ -21,7 +21,7 @@ def trivia():
 
 def answer_choices():
     ans_choices = []
-    trivia_resp = trivia()
+    trivia_resp = trivia_response
     if trivia_resp["results"][0]["type"] == 'multiple':
         ans_choices = [html.unescape(trivia_resp["results"][0]["correct_answer"]),
                        html.unescape(trivia_resp["results"][0]["incorrect_answers"][0]),
