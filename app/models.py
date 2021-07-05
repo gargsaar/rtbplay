@@ -47,7 +47,7 @@ class Score(UserMixin, db.Model):
     score_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     username = db.Column(db.String(30), nullable=False)
     score = db.Column(db.Integer(), nullable=False)
-    topic = db.Column(db.String(20), nullable=False)
+    topic = db.Column(db.String(100), nullable=False)
     res_reason = db.Column(db.String(20), nullable=False)
     trivia_api_response = db.Column(db.String(5000), nullable=True)
     player_id = db.Column(db.String(120), db.ForeignKey('account.id'), nullable=False)
