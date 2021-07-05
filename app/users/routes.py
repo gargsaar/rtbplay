@@ -107,4 +107,4 @@ def contact():
                            user=current_user,
                            today_date=datetime.now().strftime("%d-%B-%Y"),
                            form=form,
-                           title='RTB | Connect')
+                           title='RTB | Contact')
