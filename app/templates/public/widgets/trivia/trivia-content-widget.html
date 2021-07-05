@@ -11,7 +11,7 @@
 
     <div class="card-body bd bd-t-0 tab-content"><!-- tab-pane -->
         <div id="cs" class="tab-pane active show">
-            <form id="myForm" action="{{url_for('users.result')}}" method="post" onsubmit="target_popup(this)">
+            <form id="myForm" action="{{url_for('users.result')}}" method="post">
 
                 <p class="tx-info"><b>Topic: </b>{{trivia['results'][0]['category']}}</p>
 
