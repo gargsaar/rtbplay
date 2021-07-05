@@ -59,7 +59,7 @@ def user_performance():
 
 def leaderboard():
     # get total_score, success_rate, points from score table
-    top_score_sql = text("SELECT username, SUM(score) AS total_score, ROUND(AVG(score)*10,0) AS success_rate, "
+    top_score_sql = text("SELECT username, SUM(score) AS total_score, ROUND(AVG(score)*1,0) AS success_rate, "
                          "FLOOR(SUM(score)*AVG(score)) AS points FROM Score GROUP BY username ORDER BY points DESC")
     top_score = db.engine.execute(top_score_sql).fetchall()
 
