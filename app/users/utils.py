@@ -21,7 +21,6 @@ def trivia():
 
 
 def answer_choices():
-    global trivia_response
     ans_choices = []
     trivia_resp = trivia_response
     if trivia_resp["results"][0]["type"] == 'multiple':
@@ -33,3 +32,7 @@ def answer_choices():
         random.shuffle(ans_choices)
         ans_choices.append("I don't know")
     return ans_choices
+
+
+def get_trivia_response():
+    return trivia_response
