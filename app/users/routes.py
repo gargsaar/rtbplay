@@ -6,6 +6,7 @@ from app import db
 from app.users.utils import trivia, user_performance, leaderboard, trivia_response, answer_choices
 import uuid
 from app.users.forms import ContactForm
+import html
 
 
 users = Blueprint('users', __name__)
@@ -28,7 +29,7 @@ def index():
 @login_required
 def result():
     user_answer = request.form["answer"]
-    correct_answer = trivia_response["results"][0]["correct_answer"]
+    correct_answer = html.unescape(trivia_response["results"][0]["correct_answer"])
     ques_category = trivia_response["results"][0]["category"]
     trivia_resp_composite = str(trivia_response)[:-1]+",'user_answer':"+user_answer+"}"
     if user_answer == correct_answer:
