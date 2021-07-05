@@ -23,10 +23,10 @@ def answer_choices():
     ans_choices = []
     trivia_resp = trivia()
     if trivia_resp["results"][0]["type"] == 'multiple':
-        ans_choices = [trivia_resp["results"][0]["correct_answer"],
-                       trivia_resp["results"][0]["incorrect_answers"][0],
-                       trivia_resp["results"][0]["incorrect_answers"][1],
-                       trivia_resp["results"][0]["incorrect_answers"][2]
+        ans_choices = [html.unescape(trivia_resp["results"][0]["correct_answer"]),
+                       html.unescape(trivia_resp["results"][0]["incorrect_answers"][0]),
+                       html.unescape(trivia_resp["results"][0]["incorrect_answers"][1]),
+                       html.unescape(trivia_resp["results"][0]["incorrect_answers"][2])
                        ]
         random.shuffle(ans_choices)
         ans_choices.append("I don't know")
