@@ -3,7 +3,8 @@ from datetime import datetime
 from flask_login import login_required, current_user
 from app.models import Score, Contact
 from app import db
-from app.users.utils import trivia, user_performance, leaderboard, trivia_response, answer_choices
+from app.users.utils import trivia, trivia_response, answer_choices
+from app.users.dash import user_performance, leaderboard
 import uuid
 from app.users.forms import ContactForm
 import html
