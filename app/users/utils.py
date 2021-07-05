@@ -12,6 +12,7 @@ answer_choices = []
 
 
 def trivia():
+    global trivia_response
     token = current_app.config['TRIVIA_SESSION_TOKEN']
     response = requests.get(f"{opentdb_api_url}{token}").json()
     trivia_response.update(response)
@@ -20,6 +21,7 @@ def trivia():
 
 
 def answer_choices():
+    global trivia_response
     ans_choices = []
     trivia_resp = trivia_response
     if trivia_resp["results"][0]["type"] == 'multiple':
