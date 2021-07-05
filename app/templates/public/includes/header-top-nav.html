@@ -51,8 +51,12 @@
                         </span>
                     </div>
 
-                    <a href="{{ url_for('users.profile') }}" class="dropdown-item"><i class="typcn typcn-user-outline"></i> My
+                    <a href="{{ url_for('users.profile') }}" class="dropdown-item"><i class="typcn typcn-user-outline"></i>
                         Profile</a>
+                    <a href="{{ url_for('main.about') }}" class="dropdown-item"><i class="typcn typcn-chart-bar-outline"></i>
+                        About</a>
+                    <a href="{{ url_for('users.contact') }}" class="dropdown-item"><i class="typcn typcn-mail"></i>
+                        Contact</a>
                     <a href="{{ url_for('main.logout') }}" class="dropdown-item"><i class="typcn typcn-power-outline"></i>
                         Sign Out</a>
 
