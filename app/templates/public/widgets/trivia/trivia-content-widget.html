@@ -1,17 +1,5 @@
 <!--widget: trivia content widget shows the open trivia question -->
 
-<!-- custom script to count skip clicks and send the data to home_view-->
-<script>
-    var clicks = 0;
-    function onClick() {
-      clicks += 1;
-      $('#clicks').load(
-        "{{ url_for('users.index', skip_count = '$clicks') }}"
-    };
-}
-
-</script>
-
 <!-- card-begins -->
 <div class="card bd-0">
     <div class="card-header bg-dark bd-b-0-f pd-b-0"><!-- card-header begins-->
@@ -72,7 +60,7 @@
                 <div class="mg-b-20 mg-t-20">
                     <button class="btn btn-az-primary pd-x-30 mg-r-5" type="submit">Submit</button>
                     <button class="btn btn-dark pd-x-30 mg-r-5" type="reset" value="Reset">Reset</button>
-                    <a class="btn btn-light pd-x-30" type="button" href="" onClick="onClick()">Skip Question</a>
+                    <a class="btn btn-light pd-x-30" type="button" href="{{url_for('users.index')}}">Skip Question</a>
                     <input type="hidden" name="skip_count" id="clicks">
                 </div>
             </form>
