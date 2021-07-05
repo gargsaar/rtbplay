@@ -3,7 +3,7 @@ from datetime import datetime
 from flask_login import login_required, current_user
 from app.models import Score, Contact
 from app import db
-from app.users.utils import trivia, trivia_response, answer_choices
+from app.users.utils import trivia, answer_choices, get_trivia_response
 from app.users.dash import user_performance, leaderboard
 import uuid
 from app.users.forms import ContactForm
@@ -29,6 +29,7 @@ def index():
 @users.route("/result", methods=["GET", "POST"])
 @login_required
 def result():
+    trivia_response = get_trivia_response()
     user_answer = request.form["answer"]
     correct_answer = html.unescape(trivia_response["results"][0]["correct_answer"])
     ques_category = trivia_response["results"][0]["category"]
