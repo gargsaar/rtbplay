@@ -4,6 +4,7 @@ from flask_login import current_user
 from sqlalchemy import text
 import random
 from flask import current_app
+import html
 
 opentdb_api_url = 'https://opentdb.com/api.php?amount=1&token='
 trivia_response = {}
@@ -14,7 +15,7 @@ def trivia():
     token = current_app.config['TRIVIA_SESSION_TOKEN']
     response = requests.get(f"{opentdb_api_url}{token}").json()
     trivia_response.update(response)
-
+    trivia_response["results"][0]["question"] = html.unescape(trivia_response["results"][0]["question"])
     return trivia_response
 
 
