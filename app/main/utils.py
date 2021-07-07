@@ -31,7 +31,7 @@ def trivia():
             difficulty=html.unescape(trivia_response["results"][0]["difficulty"]),
             question=html.unescape(trivia_response["results"][0]["question"]),
             correct_answer=html.unescape(trivia_response["results"][0]["correct_answer"]),
-            incorrect_answers=html.unescape(trivia_response["results"][0]["incorrect_answers"]),
+            incorrect_answers=trivia_response["results"][0]["incorrect_answers"],
             trivia_response=str(trivia_response)
         )
         db.session.add(new_trivia)
@@ -51,9 +51,9 @@ def answer_choices():
 
     if trivia_resp[4] == 'multiple':
         ans_choices = [trivia_resp[7],
-                       trivia_resp[8][0],
-                       trivia_resp[8][1],
-                       trivia_resp[8][2]
+                       html.unescape(trivia_resp[8][0]),
+                       html.unescape(trivia_resp[8][1]),
+                       html.unescape(trivia_resp[8][2])
                        ]
         random.shuffle(ans_choices)
         ans_choices.append("I don't know")
