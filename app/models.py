@@ -2,7 +2,7 @@ from app import db, login_manager
 from flask_login import UserMixin, current_user
 from datetime import datetime
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
-from flask import render_template
+from flask import render_template, current_app
 
 
 @login_manager.user_loader
@@ -12,8 +12,7 @@ def load_user(user_id):
 
 @login_manager.unauthorized_handler
 def unauthorized():
-    return render_template("/public/unauthenticated/login.html", logged_in=current_user.is_active)
-
+    return render_template("/public/iam-page/login.html", logged_in=current_user.is_active)
 
 
 class Account(UserMixin, db.Model):
@@ -44,7 +43,7 @@ class Account(UserMixin, db.Model):
 
 class Score(UserMixin, db.Model):
     id = db.Column(db.String(120), primary_key=True, unique=True, nullable=False)
-    score_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    score_posted_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     username = db.Column(db.String(30), nullable=False)
     score = db.Column(db.Integer(), nullable=False)
     topic = db.Column(db.String(100), nullable=False)
@@ -62,8 +61,19 @@ class Contact(UserMixin, db.Model):
 
 class APIMetaData(UserMixin, db.Model):
     created_at = db.Column(db.DateTime, primary_key=True, nullable=False, default=datetime.utcnow)
-    username = db.Column(db.String(30), unique=False, nullable=False)
+    username = db.Column(db.String(30), nullable=False)
     gender_api_response = db.Column(db.String(5000), nullable=False)
     email_api_response = db.Column(db.String(5000), nullable=False)
 
+
+class TriviaApiResponse(UserMixin, db.Model):
+    created_at = db.Column(db.DateTime, primary_key=True, nullable=False, default=datetime.utcnow)
+    username = db.Column(db.String(30), nullable=False)
+    category = db.Column(db.String(120), nullable=False)
+    type = db.Column(db.String(30), nullable=False)
+    difficulty = db.Column(db.String(30), nullable=False)
+    question = db.Column(db.String(5000), nullable=False)
+    correct_answer = db.Column(db.String(200), nullable=False)
+    incorrect_answers = db.Column(db.ARRAY(db.String(500)), nullable=False)
+    trivia_response = db.Column(db.String(5000), nullable=False)
 

@@ -1,9 +1,9 @@
 <!-- included template from includes-->
-{% include "/public/includes/login-page-layout.html" %}
+{% include "/public/widgets/general-widget/login-page-layout.html" %}
 
         <!-- az-column-signup-right -->
         <div class="az-column-signup">
-            <a href="{{url_for('main.login')}}"><h1 class="az-logo">R<span>T</span>B</h1></a>
+            <a href="{{url_for('iam.login')}}"><h1 class="az-logo">R<span>T</span>B</h1></a>
             <div class="az-signup-header"><!-- az-signup-header -->
                 <h2>Welcome back!</h2>
                 <h4>Reset Password</h4>
@@ -54,8 +54,8 @@
             </div><!-- az-signup-header -->
 
             <div class="az-signup-footer"><!-- az-signin-footer -->
-                <p>Try <a href="{{url_for('main.login')}}">Login</a> again</p>
-                <p>Don't have an account? <a href="{{ url_for('main.signup') }}">Create an Account</a></p>
+                <p>Try <a href="{{url_for('iam.login')}}">Login</a> again</p>
+                <p>Don't have an account? <a href="{{ url_for('iam.signup') }}">Create an Account</a></p>
             </div><!-- az-signin-footer -->
 
         </div><!-- az-column-signup -->
@@ -66,7 +66,6 @@
     <!-- vendor js -->
     <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='lib/ionicons/ionicons.js') }}"></script>
 
     <!-- azia css -->
     <script src="{{ url_for('static', filename='js/azia.js') }}"></script>
