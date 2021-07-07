@@ -49,11 +49,11 @@ def answer_choices():
     ans_choices = []
     trivia_resp = get_trivia_api_latest_resp()
 
-    if trivia_resp[4] == 'multiple':
-        ans_choices = [trivia_resp[7],
-                       trivia_resp[8][0],
-                       trivia_resp[8][1],
-                       trivia_resp[8][2]
+    if trivia_resp[3] == 'multiple':
+        ans_choices = [trivia_resp[6],
+                       trivia_resp[7][0],
+                       trivia_resp[7][1],
+                       trivia_resp[7][2]
                        ]
         random.shuffle(ans_choices)
         ans_choices.append("I don't know")
@@ -66,7 +66,7 @@ def update_user_score(score, res):
         id=str(uuid.uuid1()),
         username=current_user.username,
         score=score,
-        topic=get_trivia_api_latest_resp()[3],
+        topic=get_trivia_api_latest_resp()[2],
         res_reason=res,
         player_id=current_user.id,
         trivia_api_response=str(get_trivia_api_latest_resp())
@@ -76,7 +76,7 @@ def update_user_score(score, res):
 
 
 def evaluate_trivia_response(user_answer):
-    correct_answer = get_trivia_api_latest_resp()[7]
+    correct_answer = get_trivia_api_latest_resp()[6]
 
     if correct_answer == user_answer:
         result = "correct_answer"
