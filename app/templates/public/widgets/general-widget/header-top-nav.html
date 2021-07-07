@@ -7,9 +7,9 @@
         <div class="az-header-left">
 
             {% if current_user.is_authenticated %}
-            <a href="{{url_for('users.index')}}" class="az-logo"><h1 class="az-logo">R<span>T</span>B</h1></a>
+            <a href="{{url_for('main.index')}}" class="az-logo"><h1 class="az-logo">R<span>T</span>B</h1></a>
             {% else %}
-            <a href="{{url_for('main.login')}}" class="az-logo"><h1 class="az-logo">R<span>T</span>B</h1></a>
+            <a href="{{url_for('iam.login')}}" class="az-logo"><h1 class="az-logo">R<span>T</span>B</h1></a>
             {% endif %}
 
             <a href="" id="azMenuShow" class="az-header-menu-icon d-lg-none"><span></span></a>
@@ -51,13 +51,13 @@
                         </span>
                     </div>
 
-                    <a href="{{ url_for('users.profile') }}" class="dropdown-item"><i class="typcn typcn-user-outline"></i>
+                    <a href="{{ url_for('profile.user_profile') }}" class="dropdown-item"><i class="typcn typcn-user-outline"></i>
                         Profile</a>
-                    <a href="{{ url_for('main.about') }}" class="dropdown-item"><i class="typcn typcn-chart-bar-outline"></i>
+                    <a href="{{ url_for('general.about') }}" class="dropdown-item"><i class="typcn typcn-chart-bar-outline"></i>
                         About</a>
-                    <a href="{{ url_for('users.contact') }}" class="dropdown-item"><i class="typcn typcn-mail"></i>
+                    <a href="{{ url_for('general.contact') }}" class="dropdown-item"><i class="typcn typcn-mail"></i>
                         Contact</a>
-                    <a href="{{ url_for('main.logout') }}" class="dropdown-item"><i class="typcn typcn-power-outline"></i>
+                    <a href="{{ url_for('iam.logout') }}" class="dropdown-item"><i class="typcn typcn-power-outline"></i>
                         Sign Out</a>
 
                 </div><!-- dropdown-menu ends-->

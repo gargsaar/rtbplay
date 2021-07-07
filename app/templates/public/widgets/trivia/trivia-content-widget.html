@@ -11,16 +11,16 @@
 
     <div class="card-body bd bd-t-0 tab-content"><!-- tab-pane -->
         <div id="cs" class="tab-pane active show">
-            <form id="myForm" action="{{url_for('users.result')}}" method="post">
+            <form id="myForm" action="{{url_for('main.result')}}" method="post">
 
-                <p class="tx-info"><b>Topic: </b>{{trivia['results'][0]['category']}}</p>
+                <p class="tx-info"><b>Topic: </b>{{trivia[3]}}</p>
 
                 <div class="card bg-gray-200 pd-l-20 pd-t-20 mg-b-20 mg-t-20 bd-0">
-                    <p>{{trivia["results"][0]["question"][:-1]+'?'}}<p>
+                    <p>{{trivia[6][:-1]+'?'}}<p>
                 </div>
 
 
-                {% if trivia["results"][0]["type"] == 'boolean' %}
+                {% if trivia[4] == 'boolean' %}
                 <div>
                     <input type="radio" id="radio-true" name="answer" value="True" checked>
                     <label for="radio-true">True</label>
@@ -33,7 +33,7 @@
                     <input type="radio" id="radio-notknow" name="answer" value="I don't know">
                     <label for="radio-notknow">I don't Know</label>
                 </div>
-                {% elif trivia["results"][0]["type"] == 'multiple' %}
+                {% elif trivia[4] == 'multiple' %}
                 <div>
                     <input type="radio" id="radio-multiple-1" name="answer" value="{{choice[0]}}" checked>
                     <label for="radio-multiple-1">{{choice[0]}}</label>
@@ -60,7 +60,7 @@
                 <div class="mg-b-20 mg-t-20">
                     <button class="btn btn-az-primary pd-x-30 mg-r-5" type="submit">Submit</button>
                     <button class="btn btn-dark pd-x-30 mg-r-5" type="reset" value="Reset">Reset</button>
-                    <a class="btn btn-light pd-x-30" type="button" href="{{url_for('users.index')}}">Skip Question</a>
+                    <a class="btn btn-light pd-x-30" type="button" href="{{url_for('main.index')}}">Skip Question</a>
                     <input type="hidden" name="skip_count" id="clicks">
                 </div>
             </form>

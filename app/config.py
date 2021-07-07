@@ -7,7 +7,7 @@ def trivia_session_token():
     return token_json["token"]
 
 
-class Config(object):
+class Config:
     # app secret token
     SECRET_KEY = os.environ.get('SECRET_KEY')
 
@@ -25,12 +25,13 @@ class Config(object):
     SESSION_COOKIE_SECURE = True
 
 
-class ProductionConfig(Config):
-    pass
+class ProdConfig(Config):
+    SEGMENT_JS_TRACKING_KEY = os.environ.get('WEBSITE_RTB_PROD_JS_KEY')
+    GA_SITE_TAG = os.environ.get('GA_SITE_TAG')
 
 
-class DevelopmentConfig(Config):
-    DEBUG = True
+class DevConfig(Config):
+    SEGMENT_JS_TRACKING_KEY = os.environ.get('WEBSITE_RTB_DEV_JS_KEY')
 
     # mailserver config
     MAIL_SERVER = 'smtp.googlemail.com'
@@ -38,7 +39,3 @@ class DevelopmentConfig(Config):
     MAIL_USE_TLS = True
     MAIL_USERNAME = os.environ.get('EMAIL_USER')
     MAIL_PASSWORD = os.environ.get('EMAIL_PASS')
-
-
-class TestingConfig(Config):
-    TESTING = True

@@ -10,9 +10,9 @@
         <nav class="navbar navbar-expand-lg navbar-lg navbar-dark bg-dark">
             <div class="container">
                 {% if current_user.is_authenticated %}
-                <a class="navbar-brand tx-22 font-weight-bold" href="{{ url_for('users.index') }}">RTB</a>
+                <a class="navbar-brand tx-22 font-weight-bold" href="{{ url_for('main.index') }}">RTB</a>
                 {% else %}
-                <a class="navbar-brand tx-22 font-weight-bold" href="{{ url_for('main.login') }}">RTB</a>
+                <a class="navbar-brand tx-22 font-weight-bold" href="{{ url_for('iam.login') }}">RTB</a>
                 {% endif %}
             </div>
         </nav>

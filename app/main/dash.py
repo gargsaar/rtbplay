@@ -3,7 +3,7 @@ from sqlalchemy import text
 from flask_login import current_user
 
 
-def user_performance():
+def user_perf_trivia_dash():
     user_score_sql = text('SELECT SUM(score) FROM Score WHERE username IN (:u)')
     total_score = db.engine.execute(user_score_sql, u=current_user.username).fetchall()
 
@@ -28,7 +28,7 @@ def user_performance():
     return arr
 
 
-def leaderboard():
+def leaderboard_trivia_dash():
     # get total_score, success_rate, points from score table
     top_score_sql = text("SELECT username, SUM(score) AS total_score, ROUND(AVG(score)*1,0) AS success_rate, "
                          "FLOOR(SUM(score)*AVG(score)) AS points FROM Score GROUP BY username ORDER BY points DESC")

@@ -6,15 +6,13 @@ from app.models import Account
 
 class ContactForm(FlaskForm):
     recaptcha = RecaptchaField()
-
     email = StringField('Email:', validators=[DataRequired(), Email()])
     message = TextAreaField('Message:', validators=[DataRequired(), Length(max=5000)])
     submit = SubmitField('Send')
 
 
 class RequestResetForm(FlaskForm):
-    email = StringField('Enter the email registered with RTB',
-                        validators=[DataRequired(), Email()])
+    email = StringField('Enter the email registered with RTB', validators=[DataRequired(), Email()])
     submit = SubmitField('Request Password Reset')
 
     def validate_email(self, email):
@@ -25,6 +23,5 @@ class RequestResetForm(FlaskForm):
 
 class ResetPasswordForm(FlaskForm):
     password = PasswordField('New Password', validators=[DataRequired()])
-    confirm_password = PasswordField('Confirm Password',
-                                     validators=[DataRequired(), EqualTo('password')])
+    confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Reset Password')
