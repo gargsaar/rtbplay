@@ -20,7 +20,7 @@
                 </div>
 
 
-                {% if trivia[4] == 'boolean' %}
+                {% if trivia[3] == 'boolean' %}
                 <div>
                     <input type="radio" id="radio-true" name="answer" value="True" checked>
                     <label for="radio-true">True</label>
@@ -33,7 +33,7 @@
                     <input type="radio" id="radio-notknow" name="answer" value="I don't know">
                     <label for="radio-notknow">I don't Know</label>
                 </div>
-                {% elif trivia[4] == 'multiple' %}
+                {% elif trivia[3] == 'multiple' %}
                 <div>
                     <input type="radio" id="radio-multiple-1" name="answer" value="{{choice[0]}}" checked>
                     <label for="radio-multiple-1">{{choice[0]}}</label>
