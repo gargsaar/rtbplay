@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, current_app
 
 handlers = Blueprint('handlers', __name__)
 
