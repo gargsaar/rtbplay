@@ -1,5 +1,5 @@
-from flask import render_template, Blueprint
-from flask_login import login_required, current_user, current_app
+from flask import render_template, Blueprint, current_app
+from flask_login import login_required, current_user
 
 profile = Blueprint('profile', __name__)
 
