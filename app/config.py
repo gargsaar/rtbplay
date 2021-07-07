@@ -32,6 +32,7 @@ class ProdConfig(Config):
 
 class DevConfig(Config):
     SEGMENT_JS_TRACKING_KEY = os.environ.get('WEBSITE_RTB_DEV_JS_KEY')
+    GA_SITE_TAG = os.environ.get('GA_SITE_TAG')
 
     # mailserver config
     MAIL_SERVER = 'smtp.googlemail.com'
