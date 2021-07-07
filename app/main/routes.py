@@ -1,6 +1,6 @@
 from flask import render_template, request, Blueprint, flash, redirect, url_for
 from datetime import datetime
-from flask_login import login_required, current_user
+from flask_login import login_required, current_user, current_app
 from app.models import Score, Contact
 from app import db
 from app.main.utils import trivia, answer_choices, get_trivia_api_latest_resp, evaluate_trivia_response
