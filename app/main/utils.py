@@ -128,19 +128,3 @@ def evaluate_trivia_response(user_answer):
         update_user_score(score=0, res="incorrect_answer")
 
     return result
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
