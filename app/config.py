@@ -1,10 +1,28 @@
 import os
 import requests
+from apscheduler.schedulers.background import BackgroundScheduler
 
 
-def trivia_session_token():
-    token_json = requests.get('https://opentdb.com/api_token.php?command=request').json()
-    return token_json["token"]
+# cron job function for riddle counter. write into counter.txt via cron job
+def riddle_counter_cron():
+    filename = 'counter.txt'
+    counter = 0
+    # read current counter value from counter.txt
+    with open(filename) as fh:
+        for line in fh:
+            counter = int(line)
+
+    counter = str(counter + 1)
+
+    # increment the counter and write into counter.txt
+    with open(filename, 'w') as f:
+        f.write(counter)
+
+
+# initialize scheduler with your preferred timezone
+scheduler = BackgroundScheduler({'apscheduler.timezone': 'Asia/Calcutta'})
+scheduler.add_job(func=riddle_counter_cron, trigger='interval', hours=2)
+scheduler.start()
 
 
 class Config:
@@ -20,7 +38,6 @@ class Config:
     RECAPTCHA_PUBLIC_KEY = os.environ.get('RECAPTCHA_PUBLIC_KEY')
     RECAPTCHA_PRIVATE_KEY = os.environ.get('RECAPTCHA_PRIVATE_KEY')
     MAILBOXLAYER_API_KEY = os.environ.get('MAILBOXLAYER_API_KEY')
-    TRIVIA_SESSION_TOKEN = trivia_session_token()
 
     SESSION_COOKIE_SECURE = True
 

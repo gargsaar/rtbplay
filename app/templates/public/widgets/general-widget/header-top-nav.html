@@ -1,24 +1,24 @@
 <!-- az-header begins-->
-<div class="az-header">
+<div class="az-header theme-dark ht-100">
     <div class="container">
 
 
         <!-- az-header-left begins-->
         <div class="az-header-left">
-
-            {% if current_user.is_authenticated %}
-            <a href="{{url_for('main.index')}}" class="az-logo"><h1 class="az-logo">R<span>T</span>B</h1></a>
-            {% else %}
-            <a href="{{url_for('iam.login')}}" class="az-logo"><h1 class="az-logo">R<span>T</span>B</h1></a>
-            {% endif %}
-
+            <a href="{{url_for('main.index')}}" class="az-logo">
+                <i class="typcn typcn-chart-bar-outline"></i>RTB
+            </a>
+            <!--hamburger menu-->
             <a href="" id="azMenuShow" class="az-header-menu-icon d-lg-none"><span></span></a>
         </div><!-- az-header-left ends-->
 
 
         <!-- az-header-right begins-->
         <div class="az-header-right">
-            <div class="dropdown az-profile-menu">
+            <div class="dropdown az-profile-menu rounded-5">
+
+                <!--header left menu - icon-->
+                {% if current_user.is_authenticated %}
                 <a href="" class="az-img-user">
                     {% if user.predicted_gender == 'male' %}
                     <img src="{{ url_for('static', filename='img/faces/face1.png') }}" alt="boy_avatar">
@@ -26,7 +26,9 @@
                     <img src="{{ url_for('static', filename='img/faces/face2.jpeg') }}" alt="girl_avatar">
                     {% endif %}
                 </a>
-
+                {% else %}
+                <a href="" class="tx-white tx-30"><i class="typcn typcn-th-menu-outline"></i></a>
+                {% endif %}
 
                 <!-- dropdown-menu begins-->
                 <div class="dropdown-menu">
@@ -36,6 +38,8 @@
 
                     <!-- dropdown-card content begins-->
                     <div class="az-header-profile">
+
+                        {% if current_user.is_authenticated %}
                         <div class="az-img-user">
                             {% if user.predicted_gender == 'male' %}
                             <img src="{{ url_for('static', filename='img/faces/face1.png') }}" alt="boy_avatar">
@@ -44,21 +48,46 @@
                             {% endif %}
                         </div>
                         <h6>{{user.first_name}} {{user.last_name}}</h6>
-                        <span class="tx-5">predicted gender: <b>{{user.predicted_gender}}</b>
-                            predicted country: <i class="flag-icon flag-icon-{{user.predicted_country}} flag-icon-squared"
-                            title="predicted country: {{user.predicted_country}}"></i></td></i>
-                            prediction accuracy: <b>{{user.gender_predict_accuracy}}</b>
-                        </span>
-                    </div>
+                        <div class="row">
+                            <span class="tx-5 mg-t-10">predicted gender: <b>{{user.predicted_gender}}</b></span>
+                        </div>
+                        <div class="row">
+                            <span class="tx-5">predicted country:
+                                <i class="flag-icon flag-icon-{{user.predicted_country}} flag-icon-squared"
+                                   title="predicted country: {{user.predicted_country}}">
+                                </i>
+                            </span>
+                        </div>
+                        <div class="row">
+                            <span class="tx-5 mg-b-20">prediction accuracy: <b>{{user.gender_predict_accuracy}}</b></span>
+                        </div>
 
-                    <a href="{{ url_for('profile.user_profile') }}" class="dropdown-item"><i class="typcn typcn-user-outline"></i>
+                        <a href="{{ url_for('profile.user_profile') }}" class="dropdown-item"><i class="typcn typcn-user-outline"></i>
                         Profile</a>
-                    <a href="{{ url_for('general.about') }}" class="dropdown-item"><i class="typcn typcn-chart-bar-outline"></i>
-                        About</a>
-                    <a href="{{ url_for('general.contact') }}" class="dropdown-item"><i class="typcn typcn-mail"></i>
-                        Contact</a>
-                    <a href="{{ url_for('iam.logout') }}" class="dropdown-item"><i class="typcn typcn-power-outline"></i>
-                        Sign Out</a>
+                        <a href="{{ url_for('general.about') }}" class="dropdown-item"><i class="typcn typcn-chart-bar-outline"></i>
+                            About</a>
+                        <a href="{{ url_for('general.contact') }}" class="dropdown-item"><i class="typcn typcn-mail"></i>
+                            Contact</a>
+                        <a href="{{ url_for('iam.logout') }}" class="dropdown-item"><i class="typcn typcn-power-outline"></i>
+                            Sign Out</a>
+
+                        <!-- if the user is not authenticated-->
+                        {% else %}
+                        <div>
+                            <i class="typcn typcn-user-outline tx-50 text-center"></i>
+                        </div>
+                        <p class="text-center tx-15 mg-b-30"><b>Anonymous User</b></p>
+                        <a href="{{ url_for('general.about') }}" class="dropdown-item"><i class="typcn typcn-chart-bar-outline"></i>
+                            About</a>
+                        <a href="{{ url_for('general.contact') }}" class="dropdown-item"><i class="typcn typcn-mail"></i>
+                            Contact</a>
+                        <a href="{{ url_for('iam.login') }}" class="dropdown-item"><i class="typcn typcn-power-outline"></i>
+                            Login</a>
+                        {% endif %}
+
+                    </div><!-- dropdown-card content ends-->
+
+
 
                 </div><!-- dropdown-menu ends-->
 

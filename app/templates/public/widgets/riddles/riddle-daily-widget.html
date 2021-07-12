@@ -1,0 +1,116 @@
+<!--widget: riddle content widget shows the riddle question -->
+<div class="card gd-bg-purple bd-0 rounded-5">
+    <div class="card-header">
+        <h5 class="card-title tx-white tx-small mg-b-10">Riddle Of The Hour</h5>
+    </div>
+    <div class="card-body">
+        <div class="card bd-0 bg-gray pd-10">
+            <p class="tx-black tx-16 mg-5">#{{rod[0]}}: {{rod[1]}}</p>
+        </div>
+        <div>
+            <p class="tx-white tx-bold mg-t-20 mg-b-10 mg-l-5">ANSWER BOARD</p>
+            <div class="card">
+                <div class="card-header">
+                    <p class="tx-gray-600 tx-bold">Would you like to give it a shot?</p>
+                     <form method="post" action="{{url_for('main.post_riddle_ans')}}">
+                         <div class="row form-group">
+                            <div class="col-8">
+                                {% if form.rod_user_ans.errors %}
+                                {{ form.rod_user_ans(class="form-control is-invalid", placeholder="type your answer") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.rod_user_ans.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                                {% else %}
+                                    {{ form.rod_user_ans(class="form-control", placeholder="type your answer") }}
+                                {% endif %}
+                            </div>
+                            <div class="col4">
+                                {{ form.submit(class="btn btn-az-primary btn-rounded") }}
+                            </div>
+                        </div><!-- form-group -->
+                     </form>
+                </div><!--card header ends-->
+                <div class="card-body scrollit">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th class="wd-80p">Answer(s)</th>
+                                <th class="wd-10p text-left">Username</th>
+                                <th class="text-left"></th>
+                                <th class="wd-5p">ThumbsUp</th>
+                                <th class="wd-5p"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="background-color:#ffffd9;">
+                                    <td style="vertical-align:middle;">[most recent] {{rod_ans_recent[3]}}</td>
+                                    <td style="vertical-align:middle;" class="text-left">
+                                        <input type="hidden" name="user_name" value="{{rod_ans_recent[4]}}">{{rod_ans_recent[4]}}</td>
+                                    <td style="vertical-align:middle;" class="text-left">
+                                        <input type="hidden" name="tstamp" value="{{rod_ans_recent[1]}}"></td>
+                                    <td style="vertical-align:middle;" class="text-center">{{rod_ans_recent[5]}}</td>
+                                    <td style="vertical-align:middle;"></td>
+                                </tr>
+                                {% for item in rod_ans_tup %}
+                                <form method="post" action="{{url_for('main.post_riddle_tup')}}">
+                                    <tr>
+                                        <td style="vertical-align:middle;">{{item[3]}}</td>
+                                        <td style="vertical-align:middle;" class="text-left">
+                                            <input type="hidden" name="user_name" value="{{item[4]}}">{{item[4]}}</td>
+                                        <td style="vertical-align:middle;" class="text-left">
+                                            <input type="hidden" name="tstamp" value="{{item[1]}}"></td>
+                                        <td style="vertical-align:middle;" class="text-center">{{item[5]}}</td>
+                                        <td style="vertical-align:middle;">
+                                            <button type="submit" class="btn btn-outline-indigo btn-rounded">
+                                            <i class="typcn typcn-thumbs-up"></i></button>
+                                        </td>
+                                    </tr>
+                                </form>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div><!-- table-responsive -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer bd-t-0">
+        <p class="tx-white tx-14 mg-l-5 tx-bold" id="timer"></p>
+    </div>
+</div>
+
+<script>
+var timeInSecs;
+var ticker;
+
+function startTimer(secs, date) {
+timeInSecs = parseInt(secs);
+ticker = setInterval("tick()", 1000);
+}
+
+function tick( ) {
+var secs = timeInSecs;
+if (secs > 0) {
+timeInSecs--;
+}
+else {
+clearInterval(ticker);
+startTimer(7200); // 2 hours in seconds
+}
+
+var days= Math.floor(secs/86400);
+secs %= 86400;
+var hours= Math.floor(secs/3600);
+secs %= 3600;
+var mins = Math.floor(secs/60);
+secs %= 60;
+var pretty = ( (days < 10 ) ? "0" : "" ) + days + ":" + ( (hours < 10 ) ? "0" : "" ) + hours + ":" + ( (mins < 10) ? "0" : "" ) + mins + ":" + ( (secs < 10) ? "0" : "" ) + secs;
+
+document.getElementById("timer").innerHTML = "Next riddle in: " + pretty;
+}
+
+startTimer(7200, "date"); // 2 hours in seconds
+</script>

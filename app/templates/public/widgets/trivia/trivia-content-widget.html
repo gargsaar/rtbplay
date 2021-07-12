@@ -1,71 +1,106 @@
 <!--widget: trivia content widget shows the open trivia question -->
 
-<!-- card-begins -->
-<div class="card bd-0">
-    <div class="card-header bg-dark bd-b-0-f pd-b-0"><!-- card-header begins-->
-        <nav class="nav nav-tabs">
-            <a class="nav-link active show" data-toggle="tab" href="#cs">Question</a>
-        </nav>
-    </div><!-- card-header ends-->
+<!-- modal for riddle try it -->
+<div class="modal fade" id="openTriviaModal" tabindex="-1" role="dialog" aria-hidden="true"><!--modal begins-->
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document"><!--modal dialog begins-->
+    <div class="modal-content"><!--modal content begins-->
 
+        <div class="modal-header gd-bg-warning"><!--modal header begins-->
+            <h5 class="modal-title">Open Trivia - Question</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div><!--modal header ends-->
 
-    <div class="card-body bd bd-t-0 tab-content"><!-- tab-pane -->
-        <div id="cs" class="tab-pane active show">
-            <form id="myForm" action="{{url_for('main.result')}}" method="post">
+        <div class="modal-body"><!--modal body begins-->
+            <form id="trivia-ques" action="{{url_for('main.trivia_result')}}" method="post">
+                <div class="card-body">
+                    <div class="card bd-0 bg-gray-100 pd-10">
+                        <p class="tx-black tx-14">{{trivia[6][:-1]+'?'}}</p>
+                    </div>
 
-                <p class="tx-info"><b>Topic: </b>{{trivia[3]}}</p>
+                    {% if trivia[4] == 'boolean' %}
+                    <div class="mg-t-20">
+                        <div class="row">
+                            <div class="col-6">
+                                <input type="radio" id="radio-true" name="answer" value="True" checked>
+                                <label for="radio-true" class="tx-black">True</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <input type="radio" id="radio-false" name="answer" value="False">
+                                <label for="radio-false" class="tx-black">False</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <input type="radio" id="radio-notknow" name="answer" value="I don't know">
+                                <label for="radio-notknow" class="tx-black">I don't Know</label>
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="card bg-gray-200 pd-l-20 pd-t-20 mg-b-20 mg-t-20 bd-0">
-                    <p>{{trivia[6][:-1]+'?'}}<p>
-                </div>
+                    {% elif trivia[4] == 'multiple' %}
+                    <div class="mg-t-20">
+                        <div class="row">
+                            <div class="col-6">
+                                <input type="radio" id="radio-multiple-1" name="answer" value="{{choice[0]}}" checked>
+                                <label for="radio-multiple-1" class="tx-black">{{choice[0]}}</label>
+                            </div>
+                            <div class="col-6">
+                                <input type="radio" id="radio-multiple-2" name="answer" value="{{choice[1]}}">
+                                <label for="radio-multiple-2" class="tx-black">{{choice[1]}}</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <input type="radio" id="radio-multiple-3" name="answer" value="{{choice[2]}}">
+                                <label for="radio-multiple-3" class="tx-black">{{choice[2]}}</label>
+                            </div>
+                            <div class="col-6">
+                                <input type="radio" id="radio-multiple-4" name="answer" value="{{choice[3]}}">
+                                <label for="radio-multiple-4" class="tx-black">{{choice[3]}}</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <input type="radio" id="radio-multiple-5" name="answer" value="{{choice[4]}}">
+                                <label for="radio-multiple-5" class="tx-black">{{choice[4]}}</label>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
 
-
-                {% if trivia[4] == 'boolean' %}
-                <div>
-                    <input type="radio" id="radio-true" name="answer" value="True" checked>
-                    <label for="radio-true">True</label>
-                </div>
-                <div>
-                    <input type="radio" id="radio-false" name="answer" value="False">
-                    <label for="radio-false">False</label>
-                </div>
-                <div>
-                    <input type="radio" id="radio-notknow" name="answer" value="I don't know">
-                    <label for="radio-notknow">I don't Know</label>
-                </div>
-                {% elif trivia[4] == 'multiple' %}
-                <div>
-                    <input type="radio" id="radio-multiple-1" name="answer" value="{{choice[0]}}" checked>
-                    <label for="radio-multiple-1">{{choice[0]}}</label>
-                </div>
-                <div>
-                    <input type="radio" id="radio-multiple-2" name="answer" value="{{choice[1]}}">
-                    <label for="radio-multiple-2">{{choice[1]}}</label>
-                </div>
-                <div>
-                    <input type="radio" id="radio-multiple-3" name="answer" value="{{choice[2]}}">
-                    <label for="radio-multiple-3">{{choice[2]}}</label>
-                </div>
-                <div>
-                    <input type="radio" id="radio-multiple-4" name="answer" value="{{choice[3]}}">
-                    <label for="radio-multiple-4">{{choice[3]}}</label>
-                </div>
-                <div>
-                    <input type="radio" id="radio-multiple-5" name="answer" value="{{choice[4]}}">
-                    <label for="radio-multiple-5">{{choice[4]}}</label>
-                </div>
-                {% endif %}
-
-
-                <div class="mg-b-20 mg-t-20">
-                    <button class="btn btn-az-primary pd-x-30 mg-r-5" type="submit">Submit</button>
-                    <button class="btn btn-dark pd-x-30 mg-r-5" type="reset" value="Reset">Reset</button>
-                    <a class="btn btn-light pd-x-30" type="button" href="{{url_for('main.index')}}">Skip Question</a>
-                    <input type="hidden" name="skip_count" id="clicks">
-                </div>
+                    <div class="bd-t-0">
+                        <button class="btn btn-az-primary btn-rounded pd-x-30 mg-r-20 mg-t-20" type="submit">Submit</button>
+                        <!--<button class="btn btn-outline-light btn-rounded pd-x-30 mg-r-5" type="reset" value="Reset">Reset</button>-->
+                    </div><!-- card-footer ends -->
+                </div><!-- card-body ends-->
             </form>
-        </div><!-- tab-pane -->
+        </div><!--modal body ends-->
+
+    </div><!--modal content ends-->
+  </div><!--modal dialog ends-->
+</div><!--modal ends-->
 
 
-    </div><!-- card-body -->
+
+<!-- card-begins -->
+<div class="card gd-bg-warning bd-0 rounded-5 ht-340">
+    <div class="card-header">
+        <h5 class="card-title tx-white tx-small mg-b-10">Open Trivia - Question</h5>
+    </div><!-- card-header ends-->
+    <div class="card-body">
+        <div class="card bd-0 bg-gray pd-10">
+            <p class="tx-black tx-16 mg-5">{{trivia[6][:-1]+'?'}}</p>
+        </div>
+    </div>
+    <div class="card-footer bd-t-0">
+        <a class="btn btn-az-primary btn-rounded pd-x-30 mg-r-5" type="button" data-toggle="modal"
+           data-target="#openTriviaModal">Give it a shot</a>
+        <!--<button class="btn btn-outline-light btn-rounded pd-x-30 mg-r-5" type="reset" value="Reset">Reset</button>-->
+        <a type="button" class="btn btn-outline-dark btn-rounded pd-x-30"
+           href="{{url_for('main.next_trivia')}}">Next question</a>
+    </div><!-- card-footer ends -->
 </div><!--card ends-->

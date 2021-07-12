@@ -1,0 +1,113 @@
+<!--widget: Overview message that flashes on top about the purpose of the website -->
+<!-- Modal -->
+<div class="modal fade" id="r2" tabindex="-1" role="dialog" aria-labelledby="r2" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="r2">Riddle</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div>
+            <p class="tx-info">Riddles: {{past_riddles[2][1]}}</p>
+            <p class="tx-purple">Answer: {{past_riddles[2][2]}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="r1" tabindex="-1" role="dialog" aria-labelledby="r1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="r1">Riddle</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div>
+            <p class="tx-info">Riddles: {{past_riddles[1][1]}}</p>
+            <p class="tx-purple">Answer: {{past_riddles[1][2]}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="r0" tabindex="-1" role="dialog" aria-labelledby="r0" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="r0">Riddle</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div>
+            <p class="tx-info">Riddles: {{past_riddles[0][1]}}</p>
+            <p class="tx-purple">Answer: {{past_riddles[0][2]}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- card begins -->
+<div class="card mg-b-20 rounded-5">
+    <div class="card-header">
+        <div>
+            <h5 class="card-title">Past Riddles</h5>
+        </div>
+    </div><!-- card-header -->
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th width="wd-5p">#</th>
+                    <th width="wd-70p">Riddle</th>
+                    <th width="wd-10p">Answer</th>
+                    <th width="wd-15p">Solved By</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{past_riddles[2][0]}}</td>
+                    <td style="overflow:hidden; white-space:nowrap; text-overflow: ellipsis;">
+                        {{past_riddles[2][1]}}</td>
+                    <td><a href="" data-toggle="modal" data-target="#r2">View</a></td>
+                    <td>danny.castro</td>
+                </tr>
+                <tr>
+                    <td>{{past_riddles[1][0]}}</td>
+                    <td style="white-space: nowrap;overflow: hidden; text-overflow: ellipsis;">
+                        {{past_riddles[1][1]}}</td>
+                    <td><a href="" data-toggle="modal" data-target="#r1">View</a></td>
+                    <td>danny.castro</td>
+                </tr>
+                <tr>
+                    <td>{{past_riddles[0][0]}}</td>
+                    <td style="white-space: nowrap;overflow: hidden; text-overflow: ellipsis;">
+                        {{past_riddles[0][1]}}</td>
+                    <td><a href="" data-toggle="modal" data-target="#r0">View</a></td>
+                    <td>genesis.taylor</td>
+                </tr>
+                </tbody>
+            </table>
+        </div><!-- table-responsive -->
+        <div class="card-footer">
+            <a href="">View all</a>
+        </div>
+    </div><!-- card -->
+</div>

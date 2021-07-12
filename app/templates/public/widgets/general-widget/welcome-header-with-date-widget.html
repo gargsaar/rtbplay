@@ -2,11 +2,15 @@
 <!--widget: welcome header with current date-->
 
 <!-- card: az-dashboard-one-title -->
-<div class="az-dashboard-one-title">
+<div class="az-dashboard-one-title pd-t-10">
 
     <!-- welcome message on the left-->
     <div>
-        <h2 class="az-dashboard-title">Hi {{user.first_name}} {{user.last_name}}, welcome back!</h2>
+        {% if current_user.is_authenticated %}
+        <h2 class="az-dashboard-title tx-white">Hey {{user.first_name}} {{user.last_name}}, welcome back!</h2>
+        {% else %}
+        <h2 class="az-dashboard-title tx-white">Hey there, welcome!</h2>
+        {% endif %}
         <p class="az-content-text">RTB - your playground for brainy fun.</p>
     </div>
 
@@ -15,7 +19,7 @@
         <div class="media">
             <div class="media-body">
                 <label>Today's Date</label>
-                <h6>{{today_date}}</h6>
+                <p class="tx-white">{{today_date}}</p>
             </div><!-- media-body -->
         </div><!-- media -->
     </div>

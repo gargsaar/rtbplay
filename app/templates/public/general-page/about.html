@@ -7,53 +7,50 @@
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-lg navbar-dark theme-dark">
             <div class="container">
                 {% if current_user.is_authenticated %}
-                <a class="navbar-brand tx-22 font-weight-bold" href="{{ url_for('main.index') }}">RTB</a>
+                <a class="navbar-brand tx-30 font-weight-bold" href="{{ url_for('main.index') }}">
+                    <i class="typcn typcn-chart-bar-outline"></i><em>rtb</em>
+                </a>
                 {% else %}
                 <a class="navbar-brand tx-22 font-weight-bold" href="{{ url_for('iam.login') }}">RTB</a>
                 {% endif %}
             </div>
         </nav>
-        <div class="landing-sass-header-content bg-dark">
-            <div class="container mg-b-60">
+        <div class="landing-sass-header-content theme-dark ht-500">
+            <div class="container">
                 <h1 class="text-center font-weight-bold pt-5 pb-30px mb-0 text-white">ABOUT RTB</h1>
-            </div>
-        </div>
-    </header>
-
-    <main>
-        <div class="container">
-            <section class="mb-5">
-                <div class="row">
-                    <div class="col-lg-12">
+                <div class="row mg-t-40 mg-b-40">
+                    <div class="col-12">
                         <div class="tx-22 font-weight-bold mg-b-20 tx-white">WEBSITE</div>
-                        <p class="text-light">RTB, 'RAISE THE BAR', is a free web application for knowledge-based fun and entertainment.
-                            The website theme is a highly customised version of the
+                        <p class="text-light">RTB, 'RAISE THE BAR', is a free web application for knowledge-based fun
+                            and entertainment. The website theme is a highly customised version of the
                             <a href="https://www.bootstrapdash.com/product/azia-admin/">Azia Admin</a> html template by
-                            <a href="https://www.bootstrapdash.com/">bootstrapdash</a>. The core functionality of RTB is written in the
-                            Python coding language using <a href="https://flask.palletsprojects.com/en/2.0.x/">FLASK</a> framework
-                            , also making use of Javascript and other web technologies.
-
+                            <a href="https://www.bootstrapdash.com/">bootstrapdash</a>. The core functionality of RTB is
+                            written in the Python coding language using <a href="https://flask.palletsprojects.com/en/2.0.x/">FLASK</a>
+                            framework, also making use of Javascript and other web technologies.
                         </p>
                     </div>
                 </div>
-                <div class="row mg-t-20">
+                <div class="row mg-b-20">
                     <div class="col-lg-12 col-md-12">
-                        <div class="tx-22 font-weight-bold mg-b-20 tx-white">PRIVACY</div>
+                        <div class="tx-22 font-weight-bold tx-white">PRIVACY</div>
                         <p class="text-light">The application obtains the information you provide during registration.
                             In addition, the application may collect certain information automatically, including, but not limited to,
                             the way you use the application. Any of your information, including passwords that are
                             encrypted, will never be shared with any third party or external service.</a></p>
                     </div>
                 </div>
-            </section>
-        </div>
 
+            </div>
+        </div>
+    </header>
+
+    <main style="margin-top:300px;">
         <section>
             <div class="container">
-                <div id="landing-sass-testimonial-carousel" class="landing-sass-testimonial-carousel carousel slide" data-ride="carousel">
+                <div id="landing-sass-testimonial-carousel" class="landing-sass-testimonial-carousel carousel slide mg-b-100" data-ride="carousel">
                     <div class="d-flex">
                         <h4 class="font-weight-bold mb-0">CREDITS AND ACKNOWLEDGEMENTS</h4>
                         <div class="ml-auto d-flex text-gray">
@@ -196,7 +193,7 @@
             </div>
         </section>
 
-            <div class="container mg-t-30">
+            <div class="container">
                 <section class="mb-5">
                     <div class="row">
                         <div class="col-lg-12 col-md-12">
