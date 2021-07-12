@@ -1,0 +1,118 @@
+/* gradient background color*/
+.gd-bg-warning {
+    background: linear-gradient(62deg, #e65c00 0%, #F9D423 100%); }
+
+.gd-bg-purple {
+    background: linear-gradient( 111.6deg,  #7F00FF 27.3%, #E100FF 112.7% ); }
+
+.gd-bg-info {
+    background: linear-gradient(160deg, #56ab2f 0%, #a8e063 100%); }
+
+.bg-black {
+    background-color: rgb(18, 18, 18); }
+
+
+/* gradient buttons*/
+/* gradient buttons purple*/
+.btn-grad-purple {background: linear-gradient(to right, #6a3093 0%, #a044ff  51%, #6a3093  100%)}
+.btn-grad-purple {
+text-align: center;
+transition: 0.5s;
+background-size: 200% auto;
+color: white;
+box-shadow: 0 0 20px #eee;
+}
+.btn-grad-purple:hover {
+background-position: right center; /* change the direction of the change here */
+color: #fff;
+text-decoration: none;
+}
+
+/* gradient button warning*/
+.btn-grad-warning {background: linear-gradient(to right, #D1913C 0%, #FFD194  51%, #D1913C  100%)}
+.btn-grad-warning {
+text-align: center;
+transition: 0.5s;
+background-size: 200% auto;
+color: white;
+box-shadow: 0 0 20px #eee;
+}
+.btn-grad-warning:hover {
+background-position: right center; /* change the direction of the change here */
+color: #fff;
+text-decoration: none;
+}
+
+/* gradient buttons info*/
+.btn-grad-info {background: linear-gradient(to right, #77A1D3 0%, #79CBCA  51%, #77A1D3  100%)}
+.btn-grad-info {
+text-align: center;
+transition: 0.5s;
+background-size: 200% auto;
+color: white;
+box-shadow: 0 0 20px #eee;
+}
+.btn-grad-info:hover {
+background-position: right center; /* change the direction of the change here */
+color: #fff;
+text-decoration: none;
+}
+
+/* gradient buttons  dark*/
+.btn-grad-dark {background: linear-gradient(to right, #283048 0%, #859398  51%, #283048  100%)}
+.btn-grad-dark {
+text-align: center;
+transition: 0.5s;
+background-size: 200% auto;
+color: white;
+box-shadow: 0 0 20px #eee;
+}
+.btn-grad-dark:hover {
+background-position: right center; /* change the direction of the change here */
+color: #fff;
+text-decoration: none;
+}
+
+/* gradient buttons light*/
+.btn-grad-light {background: linear-gradient(to right, #8e9eab 0%, #eef2f3  51%, #8e9eab  100%)}
+.btn-grad-light {
+text-align: center;
+transition: 0.5s;
+background-size: 200% auto;
+color: white;
+box-shadow: 0 0 20px #eee;
+}
+.btn-grad-light:hover {
+background-position: right center; /* change the direction of the change here */
+color: #fff;
+text-decoration: none;
+}
+
+/* dark theme */
+.theme-dark {
+    background-color: rgb(18, 18, 18); }
+
+body {
+    font-family: 'Open Sans', sans-serif; }
+
+
+.az-profile-menu .dropdown-menu {
+    border-radius: 5px;
+    border-width: 5px; }
+
+
+.scrollit {
+    overflow:scroll;
+    max-height:250px;
+}
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,35 @@
+<div class="card bd-0">
+
+     {% if value[0] == 'correct_answer' %}
+        <div style="width:100%">
+            <div style="height:0;padding-bottom:100%;position:relative;width:100%">
+                <iframe allowfullscreen="" frameBorder="0" height="100%"
+                        src="https://giphy.com/embed/{{value[1]}}"
+                        style="left:0;position:absolute;top:0;" width="100%">
+                </iframe>
+            </div>
+        </div>
+
+        {% elif value[0] == 'not_know' %}
+        <div style="width:100%">
+            <div style="height:0;padding-bottom:100%;position:relative;width:100%">
+                <iframe allowfullscreen="" frameBorder="0" height="100%"
+                        src="https://giphy.com/embed/{{value[1]}}"
+                        style="left:0;position:absolute;top:0" width="100%">
+                </iframe>
+            </div>
+        </div>
+
+        {% else %}
+        <div style="width:100%">
+            <div style="height:0;padding-bottom:100%;position:relative;width:100%">
+                <iframe allowfullscreen="" frameBorder="0" height="100%"
+                        src="https://giphy.com/embed/{{value[1]}}"
+                        style="left:0;position:absolute;top:0" width="100%">
+                </iframe>
+            </div>
+        </div>
+        {% endif %}
+
+
+</div>

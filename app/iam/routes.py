@@ -14,17 +14,7 @@ import uuid
 iam = Blueprint('iam', __name__)
 
 
-# define the session timeout
-@iam.before_request
-def before_request():
-    session.permanent = True
-    current_app.permanent_session_lifetime = timedelta(minutes=60)
-    session.modified = True
-    g.user = current_user
-
-
 # login
-@iam.route('/', methods=["GET", "POST"])
 @iam.route('/login', methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -53,8 +43,10 @@ def login():
 # logout
 @iam.route('/logout')
 def logout():
+    session.pop('TRIVIA_SESSION_TOKEN', None)
+    session.pop('NEXT_TRIVIA_FLAG', None)
     logout_user()
-    return redirect(url_for('iam.login'))
+    return redirect(url_for('main.index'))
 
 
 # signup

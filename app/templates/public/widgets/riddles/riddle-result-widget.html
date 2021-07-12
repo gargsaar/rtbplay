@@ -3,7 +3,9 @@
 <!-- card-begins -->
 <div class="card bd-0 rounded-5">
     <div class="card-header bd-b-0-f pd-b-0 gd-bg-warning rounded-5"><!-- card-header begins-->
-         <h5 class="card-title tx-white tx-small mg-b-10">Open Trivia - Answer</h5>
+        <nav class="nav nav-tabs">
+            <a class="nav-link active show" data-toggle="tab" href="#cs">Trivia Answer</a>
+        </nav>
     </div><!-- card-header ends-->
 
     <div class="card-body bd bd-t-0 tab-content"><!-- tab-pane -->
@@ -11,24 +13,26 @@
         <div id="cs" class="tab-pane active show">
             <!--flash error messages-->
 
-            {% if value[0] == 'correct_answer' %}
+            {% if value == 'correct_answer' %}
             <p class="tx-success"><em>"You're AWESOME! Keep going and raise the bar."</em></p>
-            {% elif value[0] == 'not_know' %}
+            {% elif value == 'not_know' %}
             <p class="tx-warning"><em>"It's ok if you don't know, this is what learning is. Try Next!"</em></p>
             {% else %}
             <p class="tx-danger"><em>Oops, that's incorrect. It is the courage to continue that counts!</em></p>
             {% endif %}
 
-            <div class="card bg-gray-200 pd-l-20 pd-t-20 mg-b-20 mg-t-20 bd-0">
-                <p class="tx-info"><b>Topic: </b>{{trivia[3]}}</p>
-                <p><b>Question:</b> {{trivia[6][:-1]+'?'}}</p>
-                <p class="tx-purple"><b>Correct Answer: </b> {{trivia[7]}}</p>
-                <p class="tx-orange"><b>Your Answer: </b> {{user_answer}}</p>
-            </div>
+            <p class="tx-info"><b>Topic: </b>{{trivia[3]}}</p>
 
-            <div class="mg-t-25 mg-b-10">
-                <a class="btn btn-az-primary btn-rounded pd-x-30 mg-r-5" type="button"
-                   href="{{url_for('main.next_trivia')}}">Next Question</a>
+            <div class="card bg-gray-200 pd-l-20 pd-t-20 mg-b-20 mg-t-20 bd-0">
+                <p>{{trivia[6][:-1]+'?'}}</p>
+            </div>
+            <p class="tx-purple"><b>Correct Answer: </b> {{trivia[7]}}</p>
+            <p><b>Your Answer: </b> {{user_answer}}</p>
+
+
+            <div class="mg-t-20 mg-b-5">
+                <a class="btn btn-az-primary pd-x-30 mg-r-5" type="button"
+                   href="{{url_for('main.index')}}">Next Question</a>
             </div>
 
         </div><!-- tab-pane ends-->

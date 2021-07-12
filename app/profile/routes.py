@@ -8,7 +8,7 @@ profile = Blueprint('profile', __name__)
 @profile.route("/profile", methods=["GET", "POST"])
 @login_required
 def user_profile():
-    return render_template("/public/profile-page/page-wip.html",
+    return render_template("/public/error-page/page-wip.html",
                            user=current_user,
                            title='RTB | Brainy Fun',
                            segment_key=current_app.config['SEGMENT_JS_TRACKING_KEY'],

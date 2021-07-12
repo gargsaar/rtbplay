@@ -18,7 +18,6 @@ def about():
 
 # contact
 @general.route('/contact', methods=["GET", "POST"])
-@login_required
 def contact():
     # get the contact form
     form = ContactForm()

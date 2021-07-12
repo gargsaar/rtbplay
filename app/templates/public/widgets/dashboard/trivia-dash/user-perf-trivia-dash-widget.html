@@ -1,22 +1,26 @@
 <!-- vendor css, required for chartjs-->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+
 <!--widget: own performance bar chart -->
 
 <!--card begins-->
-<div class="card card-dashboard-five">
-  <div class="card-header">
-    <h6 class="card-title">Your Performance</h6>
-    <span class="az-content-text"><p>Here's how you're performing.</p></span>
-  </div><!-- card-header -->
+<div class="card bd-0 rounded-5 ht-340">
+    <h5 class="pd-l-20 pd-t-25">Your Trivia Performance</h5>
 
-  <!--user's score - to be updated dynamically-->
-  <h6>Total Score: {{ score[0] }}</h6>
-
-  <!--chartjs chart canvas begins-->
-  <div style="height:225px;">
-    <canvas height="225" id="myChart"></canvas>
-  </div>
+    {% if current_user.is_authenticated %}
+    <!--chartjs chart canvas begins-->
+    <span class="az-content-text pd-l-20">Here's how you're performing: <b>Total Score: {{ score[0] }}</b></span>
+    <div style="height:250px; padding:20px;">
+        <canvas height="220" id="userTriviaPerfChart"></canvas>
+    </div>
+    {% else %}
+    <!--user not logged-in-->
+    <span class="az-content-text pd-l-20">Create an account to track your performance and lead the leaderboard.</b></span>
+    <div style="height:250px; padding:20px;">
+        <a type="button" class="btn btn-indigo btn-rounded" href="{{url_for('iam.login')}}">Create Account/ Login</a>
+    </div>
+    {% endif %}
 
 </div><!-- card-dashboard-five -->
 
@@ -25,8 +29,8 @@
 <script>
   // === include 'setup' then 'config' above ===
 
-  var ctx = document.getElementById('myChart');
-  var myChart = new Chart(ctx, {
+  var ctx = document.getElementById('userTriviaPerfChart');
+  var userTriviaPerfChart = new Chart(ctx, {
     type: 'bar',
     data: {
         labels: ["Computer Science", "General Knowledge", "Social Science", "Entertainment", "Others"],

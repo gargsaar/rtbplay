@@ -1,48 +1,15 @@
-<!--widget: Wanna Connect? Send a message -->
-
-
-<!-- Modal for the widget
-<div class="modal fade" id="sendMessageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Wanna Connect?</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form method="post">
-                    <p>Just drop a line, and will get back to you asap.</p>
-                    <div class="form-group">
-                        <input type="email" class="form-control" placeholder="Enter your email" name="email"
-                               id="email" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea rows="3" class="form-control" placeholder="Enter your message" name="message"
-                                  id="message" required></textarea>
-                    </div>
-                    <button class="btn btn-az-primary btn-block" type="submit" value="Submit">Send</button>
-                    <button class="btn btn-light btn-block" type="reset" value="Clear">Reset</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
--->
-
+<!--widget: Contact -->
 
 <!-- Send a message widget to be included in the page. for best view, wrap inside <div class="col-lg-6 col-xl-6"></div>-->
 <!-- card-dashboard-five -->
-<div class="card card-dashboard-five">
+<div class="card card-dashboard-five rounded-5 gd-bg-info">
     <div class="card-header">
-        <h6 class="card-title">Wanna Connect?</h6>
-        <span class="card-text"><p>Just drop a line if you have a concern or suggestion. </p></span>
+        <h6 class="card-title">Contact</h6>
+        <span class="card-text"><p>Do you have a concern or suggestion? Just drop a line, let's Connect! </p></span>
     </div><!-- card-header -->
     <div class="row row-xs wd-xl-80p">
-        <div class="col-lg-6">
-            <a class="btn btn-primary btn-block" type="button" href="{{url_for('general.contact')}}">Send a message</a>
+        <div class="col-lg-12">
+            <a type="button" class="btn btn-outline-indigo btn-rounded" href="{{url_for('general.contact')}}"> Send Message</a>
         </div>
     </div>
 </div><!-- card-dashboard-five -->

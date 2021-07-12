@@ -77,3 +77,17 @@ class TriviaApiResponse(UserMixin, db.Model):
     incorrect_answers = db.Column(db.ARRAY(db.String(500)), nullable=False)
     trivia_response = db.Column(db.String(5000), nullable=False)
 
+
+class RiddleOfTheHour(UserMixin, db.Model):
+    rod_id = db.Column(db.String(30), primary_key=True, nullable=False)
+    rod_ques = db.Column(db.String(500), nullable=False)
+    rod_ans = db.Column(db.String(200), nullable=False)
+
+
+class RiddleOfTheHourUserAnswer(UserMixin, db.Model):
+    id = db.Column(db.String(120), primary_key=True, unique=True, nullable=False)
+    answer_posted_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    rod_id = db.Column(db.String(30), nullable=False)
+    rod_user_ans = db.Column(db.String(1000), nullable=False)
+    username = db.Column(db.String(30), nullable=False)
+    thumbsup_count = db.Column(db.String(20), nullable=True)
