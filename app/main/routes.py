@@ -90,7 +90,6 @@ def post_riddle_ans():
 
 @main.route("/post-riddle-tup", methods=["GET", "POST"])
 def post_riddle_tup():
-    print("I'm in")
     if request.method == "POST":
         post_riddle_h_tup(request.form.get('tstamp'), request.form.get('user_name'))
     return redirect(url_for('main.index'))
