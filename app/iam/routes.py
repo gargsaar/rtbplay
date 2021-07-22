@@ -32,6 +32,7 @@ def login():
             return redirect(url_for('iam.login'))
         else:
             login_user(user, remember=False)
+            flash('Login successful.', 'success')
             return redirect(url_for('main.index'))
 
     return render_template("/public/iam-page/login.html",
