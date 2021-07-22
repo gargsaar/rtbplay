@@ -73,11 +73,11 @@ def answer_choices():
     ans_choices = []
     trivia_resp = get_trivia_api_latest_resp()
 
-    if trivia_resp[4] == 'multiple':
-        ans_choices = [trivia_resp[7],
-                       html.unescape(trivia_resp[8][0]),
-                       html.unescape(trivia_resp[8][1]),
-                       html.unescape(trivia_resp[8][2])
+    if trivia_resp[3] == 'multiple':
+        ans_choices = [trivia_resp[6],
+                       html.unescape(trivia_resp[7][0]),
+                       html.unescape(trivia_resp[7][1]),
+                       html.unescape(trivia_resp[7][2])
                        ]
         random.shuffle(ans_choices)
         ans_choices.append("I don't know")
@@ -98,7 +98,7 @@ def update_user_score(score, res):
         id=str(uuid.uuid1()),
         username=user_name,
         score=score,
-        topic=get_trivia_api_latest_resp()[3],
+        topic=get_trivia_api_latest_resp()[2],
         res_reason=res,
         player_id=player,
         trivia_api_response=str(get_trivia_api_latest_resp())
@@ -117,7 +117,7 @@ def evaluate_trivia_response(user_answer):
 
     rand_num = random.randint(0, 7)
 
-    if user_answer == get_trivia_api_latest_resp()[7]:
+    if user_answer == get_trivia_api_latest_resp()[6]:
         result = ["correct_answer", giphy_correct[rand_num]]
         update_user_score(score=10, res="correct_answer")
     elif user_answer == "I don't know":
