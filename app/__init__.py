@@ -12,7 +12,7 @@ mail = Mail()
 
 
 def create_app(config_class=Config):
-    app = Flask(__name__)
+    app = Flask(__name__, static_url_path='/', static_folder='static')
 
     if app.config['ENV'] == 'production':
         app.config.from_object(ProdConfig)
@@ -36,8 +36,3 @@ def create_app(config_class=Config):
     app.register_blueprint(profile)
 
     return app
-
-
-
-
-
