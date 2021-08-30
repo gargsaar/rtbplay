@@ -10,6 +10,7 @@ import uuid
 import json
 import re
 import time
+import analytics
 
 
 def get_trivia_api_latest_resp():
@@ -126,5 +127,12 @@ def evaluate_trivia_response(user_answer):
     else:
         result = ["incorrect_answer", giphy_incorrect[rand_num]]
         update_user_score(score=0, res="incorrect_answer")
-
+    
+    
+    # Segment Track event API call to record the user action
+    if current_user.is_authenticated:
+            analytics.track('current_user.id', 'Open_Trivia', {'result':result[0]})
+        else:
+            analytics.track('12345', 'Open_Trivia', {'result':result[0]})
+            
     return result
