@@ -131,7 +131,7 @@ def evaluate_trivia_response(user_answer):
     
     # Segment Track event API call to record the user action
     if current_user.is_authenticated:
-        analytics.track('current_user.id', 'Open_Trivia', {'result':result[0]})
+        analytics.track(current_user.id, 'Open_Trivia', {'result':result[0]})
     else:
         analytics.track('12345', 'Open_Trivia', {'result':result[0]})
             
