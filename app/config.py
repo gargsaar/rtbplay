@@ -1,5 +1,6 @@
 import os
 import requests
+import analytics
 from apscheduler.schedulers.background import BackgroundScheduler
 
 
@@ -45,6 +46,7 @@ class Config:
 class ProdConfig(Config):
     SEGMENT_JS_TRACKING_KEY = os.environ.get('WEBSITE_RTB_PROD_JS_KEY')
     GA_SITE_TAG = os.environ.get('GA_SITE_TAG')
+    analytics.write_key = os.environ.get('SEGMENT_RTB_PY_SERVER_PROD_KEY')
 
 
 class DevConfig(Config):
