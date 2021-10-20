@@ -29,7 +29,7 @@ def before_request():
 @main.route('/', methods=["GET", "POST"])
 @main.route("/index.html", methods=["GET", "POST"])
 def index():
-    return render_template("/public/main-page/index.html",
+    '''return render_template("/public/main-page/index.html",
                            today_date=datetime.now().strftime("%d-%B-%Y"),
                            trivia=trivia(),
                            rod=riddle_of_the_hour(),
@@ -43,7 +43,8 @@ def index():
                            choice=answer_choices(),
                            title='RTB | Brainy Fun',
                            segment_key=current_app.config['SEGMENT_JS_TRACKING_KEY'],
-                           ga_site_tag=current_app.config['GA_SITE_TAG'])
+                           ga_site_tag=current_app.config['GA_SITE_TAG'])'''
+    return redirect(url_for('main.next_trivia'))
 
 
 @main.route("/trivia-result", methods=["GET", "POST"])
