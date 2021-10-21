@@ -42,7 +42,7 @@ def index():
                            lb=leaderboard_trivia_dash(),
                            choice=answer_choices(),
                            title='RTB | Brainy Fun',
-                           segment_key=current_app.config['SEGMENT_JS_TRACKING_KEY'],
+                           segment_key=current_app.config['WEBSITE_RTB_PROD_JS_KEY'],
                            ga_site_tag=current_app.config['GA_SITE_TAG'])'''
     return redirect(url_for('main.next_trivia'))
 
