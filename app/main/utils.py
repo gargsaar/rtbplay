@@ -66,6 +66,10 @@ def trivia():
         session['NEXT_TRIVIA_FLAG'] = False
 
     trivia_response = get_trivia_api_latest_resp()
+    
+    # Segment Track event API call to record the user identity
+    if current_user.is_authenticated:
+        analytics.identify(current_user.id, {'email':current_user.email, 'gender':current_user.predicted_gender, 'country':current_user.predicted_country})
 
     return trivia_response
 
