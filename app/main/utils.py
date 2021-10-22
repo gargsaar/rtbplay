@@ -25,9 +25,22 @@ def set_trivia_api_resp():
 
     # generate new token for trivia api and save in session
     if 'TRIVIA_SESSION_TOKEN' not in session:
-        token_json = requests.get('https://opentdb.com/api_token.php?command=request').json()
-        session['TRIVIA_SESSION_TOKEN'] = token_json["token"]
-
+        try:
+            token_json = requests.get('https://opentdb.com/api_token.php?command=request', timeout=10).json()
+            session['TRIVIA_SESSION_TOKEN'] = token_json["token"]
+        except requests.exceptions.HTTPError as errh:  
+            print ("Http Error:",errh)
+            print("API Response Code:", token_json["response_code"])
+        except requests.exceptions.ConnectionError as errc:
+            print ("Error Connecting:",errc)
+            print("API Response Code:", token_json["response_code"])
+        except requests.exceptions.Timeout as errt:
+            print ("Timeout Error:",errt)
+            print("API Response Code:", token_json["response_code"])
+        except requests.exceptions.RequestException as err:
+            print ("OOps: Something Else",err)  
+            print("API Response Code:", token_json["response_code"])
+     
     response = requests.get(f"{opentdb_api_url}{session['TRIVIA_SESSION_TOKEN']}").json()
     trivia_response.update(response)
 
