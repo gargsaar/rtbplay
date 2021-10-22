@@ -21,8 +21,10 @@ def get_trivia_api_latest_resp():
 
 def set_trivia_api_resp():
     trivia_response = {}
-    opentdb_api_url = 'https://opentdb.com/api.php?amount=1&token='
+    #opentdb_api_url = 'https://opentdb.com/api.php?amount=1&token='
+    opentdb_api_url = 'https://opentdb.com/api.php?amount=1'
 
+    '''
     # generate new token for trivia api and save in session
     if 'TRIVIA_SESSION_TOKEN' not in session:
         try:
@@ -42,7 +44,9 @@ def set_trivia_api_resp():
             print ("OOps: Something Else",err)  
             print("API Response Code:", token_json["response_code"])
      
-    response = requests.get(f"{opentdb_api_url}{session['TRIVIA_SESSION_TOKEN']}").json()
+    response = requests.get(f"{opentdb_api_url}{session['TRIVIA_SESSION_TOKEN']}").json()'''
+    
+    response = requests.get(f"{opentdb_api_url}").json()
     trivia_response.update(response)
 
     if current_user.is_authenticated:
@@ -70,6 +74,8 @@ def set_trivia_api_resp():
 
 
 def trivia():
+    
+    '''
     # set the next riddle flag as a session variable
     if 'NEXT_TRIVIA_FLAG' not in session:
         set_trivia_api_resp()
@@ -77,8 +83,9 @@ def trivia():
 
     if session['NEXT_TRIVIA_FLAG']:
         set_trivia_api_resp()
-        session['NEXT_TRIVIA_FLAG'] = False
-
+        session['NEXT_TRIVIA_FLAG'] = False'''
+    
+    set_trivia_api_resp()
     trivia_response = get_trivia_api_latest_resp()
 
     return trivia_response
