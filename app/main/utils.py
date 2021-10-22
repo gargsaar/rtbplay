@@ -28,6 +28,7 @@ def set_trivia_api_resp():
         try:
             token_json = requests.get('https://opentdb.com/api_token.php?command=request', timeout=10).json()
             session['TRIVIA_SESSION_TOKEN'] = token_json["token"]
+            print("API RESPONSE:", token_json)
         except requests.exceptions.HTTPError as errh:  
             print ("Http Error:",errh)
             print("API Response Code:", token_json["response_code"])
