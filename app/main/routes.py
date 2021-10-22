@@ -45,10 +45,6 @@ def index():
                            title='RTB | Brainy Fun',
                            segment_key=current_app.config['SEGMENT_JS_TRACKING_KEY'],
                            ga_site_tag=current_app.config['GA_SITE_TAG'])'''
-    
-    # Segment Track event API call to record the user identity
-    if current_user.is_authenticated:
-        analytics.identify(current_user.id, {'email':current_user.email, 'gender':current_user.predicted_gender, 'country':current_user.predicted_country})
         
     return redirect(url_for('main.next_trivia'))
 
